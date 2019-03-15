@@ -1,0 +1,59 @@
+﻿
+@model ResistanceCalculator.ViewModels.CalculatorViewModel
+@{
+    ViewData["Title"] = "Calculator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="">  
+    <h2>@ViewData["Title"]</h2>
+    <div class="row">
+        
+        <div class="col-lg-6">
+            <img class="img-responsive" src="~/images/resistor-color-chart.png" alt="Alternate Text" />
+        </div>
+        <div class="col-lg-6" style="margin-top: 8%">
+            @using (Html.BeginForm())
+            {
+                <table class="table table-borderless">
+                    <tbody>
+                    <tr>
+                        <th><label>1st Band</label></th>
+                        <td>
+                            @Html.DropDownListFor(m => m.FirstBandSelectedValue, new SelectList(Model.BandValues, "Key", "Key", Model.FirstBandSelectedValue), new {@class = "form-control", onchange = "this.form.submit();"})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label>2nd Band</label></th>
+                        <td>
+                            @Html.DropDownListFor(m => m.SecondBandSelectedValue, new SelectList(Model.BandValues, "Key", "Key", Model.SecondBandSelectedValue), new {@class = "form-control", onchange = "this.form.submit();"})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label>Multiplier</label></th>
+                        <td>
+                            @Html.DropDownListFor(m => m.MultiplierSelectedValue, new SelectList(Model.MultiplierValues, "Key", "Key", Model.MultiplierSelectedValue), new {@class = "form-control", onchange = "this.form.submit();"})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label>Tolerance</label></th>
+                        <td>
+                            @Html.DropDownListFor(m => m.ToleranceSelectedValue, new SelectList(Model.ToleranceValues, "Key", "Key", Model.ToleranceSelectedValue), new {@class = "form-control", onchange = "this.form.submit();"})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label>OhmsValue</label></th>
+                        <td>
+                            @Model.OhmsValue<span> ohms</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            }
+        </div>
+    </div>
+    
+</div>
+
+    
